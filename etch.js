@@ -9,6 +9,13 @@ sliderValue.addEventListener("change", () => {
     resizeGrid();
 });
 
+document.addEventListener("mouseup", () => {
+    mouseDown = false;
+    console.log(`mouseup: ${mouseDown}`);
+});
+
+let mouseDown = false;
+
 function createGrid() {
     const cellCount = sliderValue.value;
     const gridStyles = window.getComputedStyle(grid);
@@ -16,20 +23,33 @@ function createGrid() {
     const cellSize = gridSize / cellCount;
 
     for (let i = 0; i < cellCount * cellCount; i++) {
-        const gridCell = document.createElement("div");
-        gridCell.style.width = `${cellSize}px`;
-        gridCell.style.height = `${cellSize}px`;
-        gridCell.classList.add("grid-cell");
-        grid.appendChild(gridCell);
-        
+        const newGridCell = document.createElement("div");
+        newGridCell.style.width = `${cellSize}px`;
+        newGridCell.style.height = `${cellSize}px`;
+        newGridCell.classList.add("grid-cell");
+
+        newGridCell.addEventListener("mousedown", () => {
+            mouseDown = true;
+            newGridCell.style.backgroundColor = "black";
+            console.log(`mousedown: ${mouseDown}`);
+        });
+
+        newGridCell.addEventListener("mouseover", () => {
+            if (mouseDown) {
+                newGridCell.style.backgroundColor = "black";
+                console.log(`mouseover: ${mouseDown}`);
+            }
+        });
+
+        grid.appendChild(newGridCell);
     }
 }
 
 function resizeGrid() {
     //Removes all previous cells
     const prevCellCount = grid.querySelectorAll(".grid-cell");
-    prevCellCount.forEach(cell => {
-        grid.removeChild(cell);
+    prevCellCount.forEach(gridCell => {
+        grid.removeChild(gridCell);
     })
 
     createGrid();
