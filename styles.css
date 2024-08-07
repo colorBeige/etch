@@ -15,7 +15,8 @@ header {
 }
 
 .slider {
-    -webkit-appearance: none;
+    /* This is called a vendor prefix*/
+    -webkit-appearance: none; 
     background-color: white;
     border-radius: 16px;
     height: 0.5rem;
@@ -50,10 +51,11 @@ button {
 
 .grid-cell {
     border: 1px solid black;
+    user-select: none;
 }
 
 .grid {
     display: flex;
     flex-wrap: wrap;
-    width: 500px; /* Or any suitable max width */
+    width: 500px;
 }
