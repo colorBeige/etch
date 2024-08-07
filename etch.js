@@ -6,12 +6,16 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function initializeGrid() {
-    let gridSize = sliderValue.value;
+    const cellCount = sliderValue.value;
+    const gridStyles = window.getComputedStyle(grid);
+    const gridSize = parseInt(gridStyles.width);
 
-    for (let i = 0; i < gridSize * gridSize; i++) {
-        const gridElement = document.createElement("div");
-        gridElement.classList.add("grid-element");
-        grid.appendChild(gridElement);
+    for (let i = 0; i < cellCount * cellCount; i++) {
+        const gridCell = document.createElement("div");
+        gridCell.style.width = `${(gridSize / cellCount)}px`;
+        gridCell.style.height = `${(gridSize / cellCount)}px`;
+        gridCell.classList.add("grid-cell");
+        grid.appendChild(gridCell);
         
     }
 }
