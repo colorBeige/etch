@@ -1,6 +1,7 @@
 const grid = document.querySelector(".grid");
 const sliderValue = document.querySelector(".slider");
 const colorValue = document.querySelector(".color-picker");
+const rainbowButton = document.querySelector(".rainbow");
 
 document.addEventListener("DOMContentLoaded", () => {
     createGrid();
@@ -12,6 +13,25 @@ sliderValue.addEventListener("change", () => {
 
 document.addEventListener("mouseup", () => {
     mouseDown = false;
+});
+
+document.addEventListener("mousedown", (e) => {
+    mouseDown = true;
+    if (e.target.classList.contains("grid-cell")) {
+        colorCell(e);
+    }
+});
+
+document.addEventListener("mouseover", (e) => {
+    if (mouseDown && e.target.classList.contains("grid-cell")) {
+        colorCell(e);
+    }
+});
+
+let toggleRainbow = false;
+
+rainbowButton.addEventListener("click", () => {
+    toggleRainbow = toggleRainbow ? false : true;
 });
 
 let mouseDown = false;
@@ -28,17 +48,6 @@ function createGrid() {
         newGridCell.style.height = `${cellSize}px`;
         newGridCell.classList.add("grid-cell");
 
-        newGridCell.addEventListener("mousedown", () => {
-            mouseDown = true;
-            newGridCell.style.backgroundColor = colorValue.value;
-        });
-
-        newGridCell.addEventListener("mouseover", () => {
-            if (mouseDown) {
-                newGridCell.style.backgroundColor = colorValue.value;
-            }
-        });
-
         grid.appendChild(newGridCell);
     }
 }
@@ -52,3 +61,15 @@ function resizeGrid() {
 
     createGrid();
 }
+
+function colorCell(e) {
+    if (toggleRainbow) {
+        e.target.style.backgroundColor = `rgb(${rgbValue()}, ${rgbValue()}, ${rgbValue()})`;
+    } else {
+        e.target.style.backgroundColor = colorValue.value;
+    }
+ }
+
+ function rgbValue() {
+    return Math.floor(Math.random() * 256);
+ }
