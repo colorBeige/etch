@@ -2,6 +2,7 @@ const grid = document.querySelector(".grid");
 const sliderValue = document.querySelector(".slider");
 const colorValue = document.querySelector(".color-picker");
 const rainbowButton = document.querySelector(".rainbow");
+const sliderText = document.querySelector(".slider-value");
 
 document.addEventListener("DOMContentLoaded", () => {
     createGrid();
@@ -9,6 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 sliderValue.addEventListener("change", () => {
     resizeGrid();
+    sliderText.textContent = `${sliderValue.value} X ${sliderValue.value}`;
 });
 
 document.addEventListener("mouseup", () => {
@@ -47,6 +49,7 @@ function createGrid() {
         newGridCell.style.width = `${cellSize}px`;
         newGridCell.style.height = `${cellSize}px`;
         newGridCell.classList.add("grid-cell");
+        newGridCell.style.backgroundColor = "white";
 
         grid.appendChild(newGridCell);
     }
