@@ -1,5 +1,6 @@
 const grid = document.querySelector(".grid");
 const sliderValue = document.querySelector(".slider");
+const colorValue = document.querySelector(".color-picker");
 
 document.addEventListener("DOMContentLoaded", () => {
     createGrid();
@@ -11,7 +12,6 @@ sliderValue.addEventListener("change", () => {
 
 document.addEventListener("mouseup", () => {
     mouseDown = false;
-    console.log(`mouseup: ${mouseDown}`);
 });
 
 let mouseDown = false;
@@ -30,14 +30,12 @@ function createGrid() {
 
         newGridCell.addEventListener("mousedown", () => {
             mouseDown = true;
-            newGridCell.style.backgroundColor = "black";
-            console.log(`mousedown: ${mouseDown}`);
+            newGridCell.style.backgroundColor = colorValue.value;
         });
 
         newGridCell.addEventListener("mouseover", () => {
             if (mouseDown) {
-                newGridCell.style.backgroundColor = "black";
-                console.log(`mouseover: ${mouseDown}`);
+                newGridCell.style.backgroundColor = colorValue.value;
             }
         });
 
