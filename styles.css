@@ -35,7 +35,6 @@ header {
     display: flex;
     flex-direction: column;
     justify-content: center;
-
 }
 
 button {
@@ -43,14 +42,12 @@ button {
     padding: 0.25rem;
 }
 
-
 .interface {
     display: flex;
     justify-content: center;
 }
 
 .grid-cell {
-    border: 1px solid black;
     user-select: none;
 }
 
@@ -58,4 +55,5 @@ button {
     display: flex;
     flex-wrap: wrap;
     width: 500px;
+    border: 1px solid black;
 }
