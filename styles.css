@@ -33,28 +33,27 @@ header {
 .options {
     display: flex;
     flex-direction: column;
-    margin: left;
+    justify-content: center;
 
 }
 
 button {
     max-width: 100px;
+    padding: 0.25rem;
 }
 
 
 .interface {
     display: flex;
     justify-content: center;
-    margin: 0px 10%;
 }
 
 .grid-cell {
     border: 1px solid black;
-    padding: 10px;
 }
 
 .grid {
     display: flex;
     flex-wrap: wrap;
-    width: 500px;
+    width: 500px; /* Or any suitable max width */
 }
