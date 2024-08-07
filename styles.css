@@ -1,0 +1,60 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+    background-color: lightgray;
+}
+
+header {
+    text-align: center;
+}
+
+.slider {
+    -webkit-appearance: none;
+    background-color: white;
+    border-radius: 16px;
+    height: 0.5rem;
+    width: 200px;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 16px;
+    width: 16px;
+    background-color: gray;
+    border-radius: 32px;
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+    margin: left;
+
+}
+
+button {
+    max-width: 100px;
+}
+
+
+.interface {
+    display: flex;
+    justify-content: center;
+    margin: 0px 10%;
+}
+
+.grid-cell {
+    border: 1px solid black;
+    padding: 10px;
+}
+
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    width: 500px;
+}
